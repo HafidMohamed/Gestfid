@@ -1,0 +1,138 @@
+function list(){
+    document.title ="GestFid | Lists" ;
+    myMain[0].innerHTML='<div class="list-view">'+
+    '<h2 class="list-title overview__heading">choose the major and the class to list the students</h2>'+
+'<div class="row">'+
+
+    '<div class="row-col">'+
+        '<label class="row-text">Major:</label>'+
+    '<div >'+
+    
+    '<select class="select-css" id="filiere" name="filiere">'+
+'<c:forEach items="${etudiantModel.listfilieres}" var="e">'+
+
+                 '<option>${e.filiere}</option>'+
+                 
+
+            '</c:forEach>'+
+'</select>'+
+     '<div class="select-dropdown"></div>'+
+ '</div>'+
+'</div>'+
+ '<div class="row-col" >'+
+ '<label class="row-text">Class:</label>'+
+ '<div class="custom-select">'+
+   '<select class="select-css" id="classe" name="classe">'+
+'<c:forEach items="${etudiantModel.listClasses}" var="e">'+
+
+                 '<option>${e.classe}</option>'+
+
+             '</c:forEach>'+
+'</select>'+
+     '<div class="select-dropdown"></div>'+
+ '</div>'+
+'</div>'+
+'<div class="row-col" >'+
+ '<button type="submit" onclick="table()" class="btn btn__visible">Submit</button>'+
+'</div>'+
+'</div>'+
+
+'<div class="list-view__table">'+
+'</div>'+
+'</div>'
+;
+console.log("suc");
+$("#classe").on("change", function() {
+            $.ajax({
+                url : 'ListClass',
+                tpye: "POST",
+                data : {
+                	filiere : $('#filiere').val(),
+                	classe : $('#classe').val()
+                },
+                success : function(responseText) {
+                	document.getElementById('filiere').value = '';
+    	        	document.getElementById('classe').value = '';
+    	        	window.location.reload();
+                }
+            });
+        
+    });
+}
+<div class="popup">
+                    <div class="shadow"></div>
+                    <div class="inner_popup">
+                        <div class="notification_dd">
+                            <ul class="notification_ul">
+                                <li class="title">
+                                    <p id="notification_dd">All Notifications</p>
+                                    <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
+                                </li> 
+                                <li class="starbucks success">
+                                    <div class="notify_icon">
+                                        <span class="icon"><img class="messages_img" src="img/hafid1.jpg" width="100%" alt="Sender"></span>  
+                                    </div>
+                                    <div class="notify_data">
+                                        <div class="title">
+                                          Rachidi Yassine  
+                                        </div>
+                                        <div class="sub_title">
+                                          i have a probleme
+                                      </div>
+                                    </div>
+                                    <div class="notify_status">
+                                        <p>Unread</p>  
+                                    </div>
+                                </li>  
+                                <li class="baskin_robbins failed">
+                                    <div class="notify_icon">
+                                        <span class="icon"><img class="messages_img" src="img/hafid1.jpg" width="100%" alt="Sender"></span>  
+                                    </div>
+                                    <div class="notify_data">
+                                        <div class="title">
+                                          Hafid Awatif  
+                                        </div>
+                                        <div class="sub_title">
+                                          Hey,i think you forgot
+                                      </div>
+                                    </div>
+                                    <div class="notify_status">
+                                        <p>read</p>  
+                                    </div>
+                                </li> 
+                                <li class="starbucks success">
+                                  <div class="notify_icon">
+                                      <span class="icon"><img class="messages_img" src="img/hafid1.jpg" width="100%" alt="Sender"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                        Rachidi Yassine  
+                                      </div>
+                                      <div class="sub_title">
+                                        i have a probleme
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Unread</p>  
+                                  </div>
+                              </li>  
+                              <li class="baskin_robbins failed">
+                                  <div class="notify_icon">
+                                      <span class="icon"><img class="messages_img" src="img/hafid1.jpg" width="100%" alt="Sender"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                        Hafid Awatif  
+                                      </div>
+                                      <div class="sub_title">
+                                        Hey,i think you forgot
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>read</p>  
+                                  </div>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
